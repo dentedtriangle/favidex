@@ -1,0 +1,59 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container-fluid
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      .container-fluid.nav-collapse
+        %ul.nav.main
+          %li
+            %a{:class="favi-icon"}
+          %li
+            %a{:class=>"brand"}
+            = if user.signed_in? do
+              %ul.nav.logged-in
+                %li
+                  < > refresh shuffle
+                %li= link_to "settings", user
+                %li= link_to "about", "/about"
+                %li= link_to "help", "/help"
+                %li= link_to "applet >>", "#"
+                %li= link_to "logout", "/users/logout"
+            = else
+              %ul.nav.new
+                %li= link_to "about", "/about"
+                %li= link_to "login", "/login"
+                %li= link_to "register", "/register"
+                %li= link_to "email address", "/email"
+                %li= link_to "username", "/username"
+                %li= link_to "password", "/password"
+                %li= link_to "create", "/create"
+            = end
+          %li
+
+        %ul.nav.fullscreen
+          %li.header fullscreen
+          %li Press F11 on Windows
+          %li CMD + SHIFT + F on Mac
+
+        %ul.nav.favibar-index
+          %li.header favibar index
+          %li >> Favitop
+          %li Social Media & Tech
+          %li News & Articles
+          %li Locker
+          %li Entertainment and Shows
+          %li Tools & Info
+          %li Video & Music
+          %li Shopping & Travel
+          %li Pictures
+          %li Downloads & Streams
+
+        = collections.each do |collection|
+          %ul.nav
+            %li.header
+              = collection.title
+            = collection.each do |source|
+              %li
+                link_to source.name, source.link

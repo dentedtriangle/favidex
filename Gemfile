@@ -14,6 +14,7 @@ gem 'decent_exposure'
 
 group :assets do
   gem 'uglifier', '>= 1.0.3'
+  gem 'coffee-script'
   # gem 'html5-rails'
   gem 'jquery-rails'
   gem 'less-rails'
@@ -22,6 +23,7 @@ end
 
 # UI
 gem 'jquery-rails'
+gem 'haml'
 
 # server
 gem 'thin'
