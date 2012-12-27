@@ -8,17 +8,31 @@
       .container-fluid.nav-collapse
         %ul.nav.main
           %li
-            %a{:class="favi-icon"}
+            %a{:class="favidex-icon"}
           %li
             %a{:class=>"brand"}
             = if user.signed_in? do
               %ul.nav.logged-in
                 %li
+                  %a{:class="previous"}
+                  %a{:class="next"}
+                  %a{:class="refresh"}
+                  %a{:class="shuffle"}
                   < > refresh shuffle
                 %li= link_to "settings", user
                 %li= link_to "about", "/about"
                 %li= link_to "help", "/help"
-                %li= link_to "applet >>", "#"
+                %li
+                  = link_to "applet >>", "#"
+                  %ul.nav
+                    %li
+                      get the
+                      %span favidex applet
+                    %li
+                      .applet
+                        %span{:class=>"favidex-icon"}
+                        %span
+                          Drag icon into your bookmark toolbar to be able to quickly Favi a website you're browsing
                 %li= link_to "logout", "/users/logout"
             = else
               %ul.nav.new
